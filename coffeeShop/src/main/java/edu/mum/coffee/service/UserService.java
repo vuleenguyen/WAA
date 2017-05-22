@@ -34,7 +34,7 @@ public class UserService {
 
 		Set<Authorities> authorities = new HashSet<>();
 		Authorities authority = new Authorities();
-		authority.setAuthority("USER");
+		authority.setAuthority("ROLE_USER");
 		authority.setUsers(users);
 		authorities.add(authority);
 		users.setAuthorities(authorities);

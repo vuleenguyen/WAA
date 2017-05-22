@@ -53,4 +53,19 @@ public class ProductService {
 		return productRepository.findByProductType(productType);
 	}
 
+	public List<Product> deleteAPI(int productId) {
+		deleteById(productId);
+		return getAllProduct();
+	}
+
+	public List<Product> updateProductAPI(Product product) {
+		save(product);
+		return getAllProduct();
+	}
+
+	public List<Product> insertProductAPI(Product product) {
+		save(product);
+		return getAllProduct();
+	}
+
 }
