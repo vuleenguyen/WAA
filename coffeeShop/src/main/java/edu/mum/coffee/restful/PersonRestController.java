@@ -17,7 +17,7 @@ import edu.mum.coffee.domain.Person;
 import edu.mum.coffee.service.PersonService;
 
 @RestController
-@RequestMapping("/rest/person")
+@RequestMapping("/rest/personRestFul")
 public class PersonRestController {
 	
 	@Autowired

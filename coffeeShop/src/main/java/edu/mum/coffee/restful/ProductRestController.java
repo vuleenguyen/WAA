@@ -19,7 +19,7 @@ import edu.mum.coffee.domain.Product;
 import edu.mum.coffee.service.ProductService;
 
 @RestController
-@RequestMapping("/rest/product")
+@RequestMapping("/rest/productRestFul")
 public class ProductRestController {
 	
 	@Autowired

@@ -22,7 +22,7 @@ import edu.mum.coffee.service.OrderService;
 import edu.mum.coffee.service.PersonService;
 
 @RestController
-@RequestMapping("/rest/order")
+@RequestMapping("/rest/orderRestFul")
 public class OrderRestController {
 	@Autowired
 	private OrderService orderService;

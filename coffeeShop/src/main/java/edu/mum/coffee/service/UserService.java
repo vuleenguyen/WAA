@@ -43,8 +43,12 @@ public class UserService {
 		personRepository.save(person);
 		return userRepository.save(users);
 	}
+	
+	public Users findUser(String username) {
+		return userRepository.findOne(username);
+	}
 
-	private String encodePassword(String password) {
+	public String encodePassword(String password) {
 		return new BCryptPasswordEncoder().encode(password);
 	}
 
