@@ -103,9 +103,18 @@
 
 /*CSS products Page*/
 .error {
-	color: #ff0000;
-	font-style: italic;
+	color: #b9041c;
 	font-weight: bold;
+}
+
+.errorSignUp {
+	color: #b9041c;
+	font-weight: 700;
+	font-size: 11px;
+}
+
+.error.message {
+	margin-top: 10px;
 }
 
 .nav-pills>li>a {
@@ -551,4 +560,32 @@
 	text-decoration: none;
 }
 
+/* CSS for Sign Up*/
+#signUp {
+	background-image: url("../image/signUp-background.jpg");
+ 	background-position: top!important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed!important;
+    height: 600px;
+    width: 1240px;
+}
+
+#signUp .centered-form{
+	margin-top: 60px;
+}
+
+#signUp .centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+	
+}
+
+#signUp .input-sm {
+	height: 40px;
+}
+
+#signUp input[type=submit].btn-block {
+	height: 40px !important;
+}
 

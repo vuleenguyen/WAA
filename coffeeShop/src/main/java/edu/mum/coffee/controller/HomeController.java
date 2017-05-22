@@ -5,21 +5,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.mum.coffee.domain.Product;
 import edu.mum.coffee.domain.ProductType;
+import edu.mum.coffee.domain.Users;
 import edu.mum.coffee.service.ProductService;
+import edu.mum.coffee.service.UserService;
 
 @Controller
 public class HomeController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	@Qualifier("userSignUpValidator")
+	private Validator validator;
+	
+	@InitBinder
+	private void initBinder(WebDataBinder binder) {
+		binder.setValidator(validator);
+	}
 
 	@RequestMapping(value = { "/", "/index", "/home" }, method = RequestMethod.GET)
 	public String homePage(Model model) {
@@ -54,6 +75,23 @@ public class HomeController {
 			return "redirect:home";
 		}
 		return "login";
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signUp(Model model) {
+		model.addAttribute("users", new Users());
+		return "signUp";
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public String register(@ModelAttribute("users")@Validated Users users, BindingResult result, Model model) {
+		if (!result.hasErrors()) {
+			userService.save(users);
+			return "redirect:/home";
+		} else {
+			model.addAttribute("users", users);
+			return "signUp";
+		}
 	}
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
