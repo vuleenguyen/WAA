@@ -30,5 +30,22 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>
-	</body>
+		<div style="height: 90px; display: inline-block;">
+			<div class="logo">
+				<img alt="logo" src="../resources/image/logo.png">
+			</div>
+		</div>
+		<div class="pull-right">
+			<div id="search" class="search">
+				<div class="search-block">
+					<form method="GET" action="filter">
+						<input type="text" name="info" value="" placeholder="Search">
+						<button type="submit" class="button-search">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+</body>
 </html>

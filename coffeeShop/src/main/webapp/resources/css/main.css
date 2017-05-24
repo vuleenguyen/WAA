@@ -1,6 +1,65 @@
 /*CSS for Header*/
+
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 .header {
 	float:right !important;
+}
+
+body, h3, h1, h2, div, p {
+	font-family: 'Lato', serif;
+}
+
+.search {
+	padding: 27px;
+}
+
+.search .search-block {
+    display: inline-block;
+    position: relative;
+    background: #ebebeb;
+    -webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    border-radius: 22px;
+}
+
+.search input[type="text"] {
+    color: #939393;
+    background: none;
+    display: block;
+    margin: 0;
+    float: left;
+    width: 370px;
+    font-size: 16px;
+    line-height: 20px;
+    height: 44px;
+    padding: 12px 35px 12px 20px;
+    border: none;
+    border-radius: 22px;
+    box-sizing: border-box;
+    outline:none;
+}
+
+.search button {
+    background: none;
+    border: none;
+    padding: 0;
+    -webkit-appearance: none;
+    position: absolute;
+    right: 3px;
+    display: inline-block;
+    outline: none;
+    outline-offset: 0;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    font: 400 18px/44px "FontAwesome";
+    height: 44px;
+    width: 44px;
+    color: #929292;
+    vertical-align: top;
+}
+
+.logo {
+    padding: 40px;
 }
 
 .header.user {
@@ -61,15 +120,20 @@
 	color: #fff;
 }
 
+#home #breakfast {
+	margin-top: 30px;
+}
+
 #home h3 {
-    font-size: 30px;
+    font-size: 20px;
     line-height: 36px;
-    font-family: "PT Serif",serif;
     font-weight: 600;
-    color: #D09C81;
-    border-bottom: 1px solid rgb(200,200,200);
+    color: #000;
+    border-bottom: 1px solid #dadada;
     margin: 0px;
     padding-top: 10px;
+    background: #f3f3f3;
+    padding-left: 15px;
 }
 
 #home .content {
@@ -142,14 +206,43 @@
     width: 80% !important;
     margin: auto !important;
     margin-top: 50px !important;
+    background-image: url(../image/bg-white-lock.png);
+    height: 275px;
+    overflow: scroll;
+}
+
+#products .glyphicon-edit:before {
+    content: "\e065";
+}
+
+#products .glyphicon-remove:before {
+    content: "\e014";
+}
+
+#products .btn-primary {
+	margin-top: 10px;
+	margin-right: 10%;
 }
 
 #products table #action {
-	padding-left: 100px;
+	padding-left: 67px;
+}
+
+#products td.action {
+	width: 50px;
 }
 
 #products #addLnk {
 	margin-left: 10%;	
+}
+
+#products .pagination {
+	margin-left: 10%;
+}
+
+#products .pagination >li >a {
+	min-width: 40px;
+    text-align: center;
 }
 
 /*CSS Modify Product*/
@@ -188,6 +281,7 @@
     width: 80% !important;
     margin: auto !important;
     margin-top: 50px !important;
+    background-image: url("/resources/image/bg-white-lock.png");
 }
 
 #persons table #action {
@@ -195,7 +289,13 @@
 }
 
 #persons #addLnk {
-	margin-left: 10%;	
+	margin-right: 10%;
+	float: right	
+}
+
+#persons .pagination {
+    margin-left: 10%;
+    display: block;
 }
 
 /*CSS Modify Person*/
@@ -312,10 +412,21 @@
 	background: #ECEFF1;
 }
 
+/*CSS for error 404*/
+#error404 .container {
+	background-image: url("../image/404.jpg");
+    height: 563px;
+    width: 1000px;
+    margin: auto;
+}
+
+#error404 {
+	background: #ECEFF1;
+}
+
 /*CSS for order*/
 #shoppingCart {
 	margin-bottom: 30px;
-	font-family: "Amazon Ember",Arial,sans-serif;
 	color: #111;
 }
 
@@ -420,7 +531,6 @@
 #shoppingCart .total {
     text-align: end;
     margin-right: 20%;
-    font-family: "Amazon Ember",Arial,sans-serif;
     font-size: 20px;
     color: #111;
     font-weight: 700;
@@ -466,7 +576,6 @@
 /* CSS for order Detail*/
 #orderDetail {
 	margin-bottom: 30px;
-	font-family: "Amazon Ember",Arial,sans-serif;
 	color: #111;
 }
 

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -45,9 +46,21 @@ public class PersonController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="list")
-	public String listAllPerson(Model model) {
-		List<Person> persons = personService.getAllPerson();
-		model.addAttribute("persons", persons);
+	public String listAllPerson(@RequestParam(value = "index",required = false) String pageNumber, Model model) {
+		
+		Page<Person> page = personService.findPersonPagination(pageNumber == null ? 1 : Integer.parseInt(pageNumber));
+
+	    int current = page.getNumber() + 1;
+	    int begin = Math.max(1, current - 5);
+	    int end = Math.min(begin + 10, page.getTotalPages());
+
+	    model.addAttribute("deploymentLog", page);
+	    model.addAttribute("beginIndex", begin);
+	    model.addAttribute("endIndex", end);
+	    model.addAttribute("currentIndex", current);
+	
+		model.addAttribute("persons", page.getContent());
+		
 		return "persons";
 	}
 	

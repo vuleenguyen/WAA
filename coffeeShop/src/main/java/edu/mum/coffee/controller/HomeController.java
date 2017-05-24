@@ -2,7 +2,11 @@ package edu.mum.coffee.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,26 +47,15 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = { "/", "/index", "/home" }, method = RequestMethod.GET)
-	public String homePage(Model model) {
+	public String homePage(HttpServletRequest request,Model model) {
 		List<Product> products = productService.getAllProduct();
-		List<Product> productsBF = new ArrayList<>();
-		List<Product> productsLunch = new ArrayList<>();
-		List<Product> productsDinner = new ArrayList<>();
-		for (Product product : products) {
-			if (product.getProductType() == ProductType.BREAKFAST) {
-				productsBF.add(product);
-			} else if (product.getProductType() == ProductType.LUNCH) {
-				productsLunch.add(product);
-			} else {
-				productsDinner.add(product);
-			}
-		}
-		model.addAttribute("breakfastProducts", productsBF);
-		model.addAttribute("lunchProducts", productsLunch);
-		model.addAttribute("dinnerProducts", productsDinner);
-		return "home";
+		Map<ProductType,List<Product>> result = classifyProduct(products);
+		model.addAttribute("breakfastProducts", result.get(ProductType.BREAKFAST));
+		model.addAttribute("lunchProducts", result.get(ProductType.LUNCH));
+		model.addAttribute("dinnerProducts", result.get(ProductType.DINNER));
+		return "index";
 	}
-
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout, Model model) {
@@ -97,5 +90,40 @@ public class HomeController {
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public String accesssDenied(Principal user) {
 		return "403";
+	}
+	
+	@RequestMapping(value = "*")
+	public String notFoundError(HttpServletRequest request) {
+		return "404";
+	}
+	
+	@RequestMapping(value = "/filter", method = RequestMethod.GET)
+	public String searchProduct(@RequestParam("info") String query, Model model) {
+		List<Product> products = productService.findByTextSearch(query);
+		Map<ProductType,List<Product>> result = classifyProduct(products);
+		model.addAttribute("breakfastProducts", result.get(ProductType.BREAKFAST));
+		model.addAttribute("lunchProducts", result.get(ProductType.LUNCH));
+		model.addAttribute("dinnerProducts", result.get(ProductType.DINNER));
+		return "home";
+	}
+	
+	private Map<ProductType,List<Product>> classifyProduct(List<Product> products) {
+		List<Product> productsBF = new ArrayList<>();
+		List<Product> productsLunch = new ArrayList<>();
+		List<Product> productsDinner = new ArrayList<>();
+		for (Product product : products) {
+			if (product.getProductType() == ProductType.BREAKFAST) {
+				productsBF.add(product);
+			} else if (product.getProductType() == ProductType.LUNCH) {
+				productsLunch.add(product);
+			} else {
+				productsDinner.add(product);
+			}
+		}
+		Map<ProductType, List<Product>> result = new HashMap<>();
+		result.put(ProductType.BREAKFAST, productsBF);
+		result.put(ProductType.LUNCH, productsLunch);
+		result.put(ProductType.DINNER, productsDinner);
+		return result;
 	}
 }

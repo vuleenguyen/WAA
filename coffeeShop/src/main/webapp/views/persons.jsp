@@ -42,7 +42,45 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				<a href="/person/add" id="addLnk" class="btn btn-success">Add Person</a>
+		<c:url var="firstUrl" value="person?index=1" />
+		<c:url var="lastUrl" value="person?index=${deploymentLog.totalPages}" />
+		<c:url var="prevUrl" value="person?index=${currentIndex - 1}" />
+		<c:url var="nextUrl" value="person?index=${currentIndex + 1}" />
+		<ul class="pagination">
+				<c:choose>
+					<c:when test="${currentIndex == 1}">
+						<li class="disabled"><a href="#">First</a></li>
+						<li class="disabled"><a href="#">Prev</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${firstUrl}">First</a></li>
+						<li><a href="${prevUrl}">Prev</a></li>
+					</c:otherwise>
+				</c:choose>
+				<c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
+					<c:url var="pageUrl" value="person?index=${i}" />
+					<c:choose>
+						<c:when test="${i == currentIndex}">
+							<li class="active"><a href="${pageUrl}"><c:out
+										value="${i}" /></a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="${pageUrl}"><c:out value="${i}" /></a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${currentIndex == deploymentLog.totalPages}">
+						<li class="disabled"><a href="#">Next</a></li>
+						<li class="disabled"><a href="#">Last</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${nextUrl}">Next</a></li>
+						<li><a href="${lastUrl}">Last</a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+			<a href="/person/add" id="addLnk" class="btn btn-success">Add Person</a>
 		</div>
 	</body>
 </html>

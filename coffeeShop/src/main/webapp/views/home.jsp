@@ -24,7 +24,9 @@
 				</div>
 			</div>
 				<div id="breakfast">
-					<h3>BREAKFAST</h3>
+					<div class="module_header">
+						<h3>Breakfast</h3>
+					</div>
 					<div class="content">
 						<c:forEach items="${breakfastProducts}" var="product" varStatus="loop">
 							<div class="item">
@@ -49,7 +51,9 @@
 									<div class="name">${product.productName}</div>
 									<div class="price">$${product.price}</div>
 									<sec:authorize access="hasRole('USER')">
-										<a class="btn btn-danger" href="product/addToCart?productId=${product.id}">Add To Cart</a>
+										<a class="btn btn-danger" href="product/addToCart?productId=${product.id}">
+										<span class="glyphicon glyphicon-shopping-cart"></span>
+										Add To Cart</a>
 									</sec:authorize>
 								</div>
 							</div>
@@ -57,7 +61,7 @@
 					</div>
 				</div>
 				<div id="lunch">
-					<h3>LUNCH</h3>
+					<h3>Lunch</h3>
 					<div class="content">
 						<c:forEach items="${lunchProducts}" var="product" varStatus="loop">
 							<div class="item">
@@ -68,12 +72,17 @@
 									<c:when test="${loop.count == 2}">
 										<img src="../resources/image/product6.png"/>
 									</c:when>
+									<c:otherwise>
+										<img src="../resources/image/trungnguyen.jpg"/>
+									</c:otherwise>
 								</c:choose>
 								<div class="caption">
 									<div class="name">${product.productName}</div>
 									<div class="price">$${product.price}</div>
 									<sec:authorize access="hasRole('USER')">
-										<a class="btn btn-danger" href="product/addToCart?productId=${product.id}">Add To Cart</a>
+										<a class="btn btn-danger" href="product/addToCart?productId=${product.id}">
+										<span class="glyphicon glyphicon-shopping-cart"></span>
+										Add To Cart</a>
 									</sec:authorize>
 								</div>
 							</div>
@@ -81,7 +90,7 @@
 					</div>
 				</div>
 				<div id="dinner">
-					<h3>DINNER</h3>
+					<h3>Dinner</h3>
 					<div class="content">
 						<c:forEach items="${dinnerProducts}" var="product" varStatus="loop">
 							<div class="item">
@@ -92,12 +101,17 @@
 									<c:when test="${loop.count == 2}">
 										<img src="../resources/image/product8.png"/>
 									</c:when>
+									<c:otherwise>
+										<img src="../resources/image/trungnguyen.jpg"/>
+									</c:otherwise>
 								</c:choose>
 								<div class="caption">
 									<div class="name">${product.productName}</div>
 									<div class="price">$${product.price}</div>
 									<sec:authorize access="hasRole('USER')">
-										<a class="btn btn-danger" href="product/addToCart?productId=${product.id}">Add To Cart</a>
+										<a class="btn btn-danger" href="product/addToCart?productId=${product.id}">
+										<span class="glyphicon glyphicon-shopping-cart"></span>
+										Add To Cart</a>
 									</sec:authorize>
 								</div>
 							</div>
