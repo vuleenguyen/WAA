@@ -84,6 +84,13 @@ body, h3, h1, h2, div, p {
     margin-right: 10px;
 }
 
+.header.count span {
+	background-color: #EBEBEB;
+    border: 1px solid rgb(245,245,245);
+    border-radius: 50%;
+    color: grey;
+}
+
 /*CSS for home page*/
 #home {
 	margin-top: 30px;
@@ -698,3 +705,76 @@ body, h3, h1, h2, div, p {
 	height: 40px !important;
 }
 
+/* Footer*/
+/* #footer .container{ */
+/* 	background-image: url("../image/footer.jpg"); */
+/* 	height: 300px; */
+/*     width: 1200px; */
+/*     max-width: 1200px; */
+/* } */
+
+footer {
+    margin-top: 30px;
+    padding-top: 60px;
+    clear: both;
+    overflow: hidden;
+    background-color: #f9e59e;
+}
+
+.block .block-heading {
+    color: #df574b;
+    font-size: 14px;
+    margin: 0 0 15px;
+    font-family: 'Roboto Slab',serif;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.block .block-content li {
+    padding: 2px 0 1px;
+}
+
+.block .block-content li a {
+    color: #b09769;
+    font-size: 12px;
+    word-wrap: break-word;
+}
+
+.block .block-content .foot-phone div.fleft {
+    margin-left: -5px
+}
+
+.block .block-content .foot-phone div {
+    color: #b09769;
+    line-height: 22px;
+    font-size: 11px;
+}
+
+.block .block-content .foot-phone span {
+    line-height: normal;
+    font-size: 36px;
+    color: #df574b;
+    margin-right: 5px;
+}
+
+#copyright {
+    background-color: #4a403d;
+    margin-top: 75px;
+    padding: 25px 0;
+    font-size: 11px;
+    color: #908481;
+}
+
+.fleft {
+    float: left;
+}
+
+.extra-wrap {
+    overflow: hidden;
+}
