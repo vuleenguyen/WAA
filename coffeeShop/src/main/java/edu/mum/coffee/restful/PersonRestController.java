@@ -7,10 +7,10 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.mum.coffee.domain.Person;
@@ -28,8 +28,8 @@ public class PersonRestController {
 		return personService.getAllPerson();
 	}
 	
-	@GetMapping(value="/show/{username}")
-	public Person changeInformationPerson(@PathVariable("username") String username) {
+	@GetMapping(value="/show")
+	public Person changeInformationPerson(@RequestParam("username") String username) {
 		List<Person> persons = personService.findByEmail(username);
 		Person person = persons != null && persons.size() > 0 ?
 				persons.get(0) : null;
@@ -37,12 +37,12 @@ public class PersonRestController {
 	}
 	
 	@PostMapping(value="/update")
-	public List<Person> updatePerson(@Valid @RequestBody Person person) {
+	public Person updatePerson(@Valid @RequestBody Person person) {
 		return personService.SaveOrUpdatePersonAPI(person);
 	}
 	
 	@PostMapping(value="/save")
-	public List<Person> savePerson(@Valid @RequestBody Person person) {
+	public Person savePerson(@Valid @RequestBody Person person) {
 		return personService.SaveOrUpdatePersonAPI(person);
 	}
 }

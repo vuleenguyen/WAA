@@ -22,7 +22,7 @@ public class PersonService {
 	public Person savePerson(Person person) {
 		return personRepository.save(person);
 	}
-
+	
 	public List<Person> findByEmail(String email) {
 		return personRepository.findByEmail(email);
 	}
@@ -39,9 +39,8 @@ public class PersonService {
 		return personRepository.findAll();
 	}
 
-	public List<Person> SaveOrUpdatePersonAPI(Person person) {
-		savePerson(person);
-		return getAllPerson();
+	public Person SaveOrUpdatePersonAPI(Person person) {
+		return savePerson(person);
 	}
 	
 	public Page<Person> findPersonPagination(Integer pageNumber) {
