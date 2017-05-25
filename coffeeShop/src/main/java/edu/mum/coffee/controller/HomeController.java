@@ -53,7 +53,7 @@ public class HomeController {
 		model.addAttribute("breakfastProducts", result.get(ProductType.BREAKFAST));
 		model.addAttribute("lunchProducts", result.get(ProductType.LUNCH));
 		model.addAttribute("dinnerProducts", result.get(ProductType.DINNER));
-		return "index";
+		return "home";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

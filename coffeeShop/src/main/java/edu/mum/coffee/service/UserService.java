@@ -62,4 +62,15 @@ public class UserService {
 		person.setAddress(new Address("FairField", "IA", "US", "52766"));
 		return person;
 	}
+	
+	public Users authenticate(Users user) {
+		Users users = userRepository.findOne(user.getUserName());
+		if (users == null) {
+			return null;
+		}
+		if (users.getPassword().equals(encodePassword(user.getPassword()))) {
+			return null;
+		}
+		return users;
+	}
 }

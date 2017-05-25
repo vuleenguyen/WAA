@@ -50,6 +50,11 @@ public class ProductRestController {
 		return productService.deleteAPI(Integer.parseInt(productId));
 	}
 	
+	@GetMapping(value="/get/{id}")
+	public Product findProduct(@PathVariable("id") String productId) {
+		return productService.getProduct(Integer.parseInt(productId));
+	}
+	
 	@PostMapping(value="/update") 
 	public List<Product> updateProduct(@Valid @RequestBody Product product) {
 		return productService.updateProductAPI(product);
