@@ -50,7 +50,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-	  registry.addMapping("/rest/**")
+	  registry.addMapping("/**")
 	   	  .allowedOrigins("http://localhost:8081", "http://localhost:8081")
 		  .allowedMethods("POST", "GET",  "PUT", "OPTIONS", "DELETE")
 		  .allowedHeaders("X-Auth-Token", "Content-Type")
@@ -58,5 +58,6 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		  .allowCredentials(false)
 		  .maxAge(4800);
 	}
+	
 
 }
